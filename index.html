@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BULL THE LEADER — The Bull Has Arrived</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       CSS VARIABLES & RESET
+    ============================================= */
+    :root {
+      --brown-900: #1a0d06;
+      --brown-800: #2a1608;
+      --brown-700: #3d1f0a;
+      --brown-600: #5c2e0d;
+      --brown-500: #7a3d12;
+      --gold:       #e8a422;
+      --gold-light: #f5c842;
+      --gold-dim:   #b87d18;
+      --amber:      #d4700a;
+      --cream:      #f5e6c8;
+      --cream-dim:  #c9b08a;
+      --red-bull:   #c0392b;
+      --green-bull: #27ae60;
+      --white:      #ffffff;
+      --text-main:  #f0ddb8;
+      --text-muted: #9a7850;
+      --glow-gold:  0 0 20px rgba(232,164,34,0.45), 0 0 60px rgba(232,164,34,0.18);
+      --glow-amber: 0 0 20px rgba(212,112,10,0.45);
+      --card-bg:    rgba(42,22,8,0.7);
+      --card-border: rgba(232,164,34,0.18);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background-color: var(--brown-900);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(92,46,13,0.6) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8a422' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color: var(--text-main);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--brown-800); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+    /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+    h1, h2, h3, .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section { padding: 5rem 0; }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--amber) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-text { text-shadow: 0 0 30px rgba(232,164,34,0.6); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 50px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-light), var(--amber));
+      color: var(--brown-900);
+      box-shadow: 0 4px 24px rgba(232,164,34,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(232,164,34,0.55);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(232,164,34,0.5);
+    }
+    .btn-outline:hover {
+      background: rgba(232,164,34,0.1);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1.75rem;
+      transition: var(--transition);
+    }
+    .card:hover {
+      border-color: rgba(232,164,34,0.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), var(--glow-gold);
+      transform: translateY(-4px);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(20,8,2,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(232,164,34,0.12);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.06em;
+      color: var(--gold-light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo .bull-emoji {
+      font-size: 1.6rem;
+      animation: bullBob 2s ease-in-out infinite;
+    }
+    @keyframes bullBob {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-4px) rotate(2deg); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { padding: 0.5rem 1.25rem; font-size: 0.85rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,6,2,0.97);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu.open { display: flex; opacity: 1; }
+    .mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 60%, rgba(92,46,13,0.5) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(193,100,10,0.15) 0%, transparent 60%);
+    }
+
+    /* Animated grain overlay */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(232,164,34,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(193,100,10,0.12) 0%, transparent 70%);
+      bottom: 0; left: -80px;
+      animation-delay: -3s;
+    }
+    @keyframes orbFloat {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 7rem 0 5rem;
+    }
+
+    .hero-text {}
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(232,164,34,0.12);
+      border: 1px solid rgba(232,164,34,0.25);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      background: var(--green-bull);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green-bull);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.9;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .hero-h1 .accent { color: var(--gold-light); }
+    .hero-h1 .outline {
+      -webkit-text-stroke: 2px var(--gold);
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--cream-dim);
+      line-height: 1.65;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .btn-lg { padding: 0.9rem 2rem; font-size: 1rem; }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {}
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-lab {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-bull-ring {
+      position: relative;
+      width: 420px;
+      height: 420px;
+    }
+
+    .ring-outer {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(232,164,34,0.15);
+      animation: ringRotate 20s linear infinite;
+    }
+    .ring-outer::before {
+      content: '🐂';
+      position: absolute;
+      font-size: 1.5rem;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+    }
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .ring-mid {
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      border: 1px dashed rgba(232,164,34,0.1);
+      animation: ringRotate 15s linear infinite reverse;
+    }
+
+    .bull-center {
+      position: absolute;
+      inset: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,46,13,0.8) 0%, rgba(26,13,6,0.9) 100%);
+      border: 2px solid rgba(232,164,34,0.3);
+      box-shadow: var(--glow-gold), inset 0 0 40px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      animation: bullPop 3s ease-in-out infinite;
+    }
+    @keyframes bullPop {
+      0%,100% { transform: scale(1) rotate(-2deg); }
+      50% { transform: scale(1.05) rotate(2deg); }
+    }
+
+    /* Ticker tape */
+    .ticker-wrap {
+      background: rgba(232,164,34,0.1);
+      border-top: 1px solid rgba(232,164,34,0.2);
+      border-bottom: 1px solid rgba(232,164,34,0.2);
+      overflow: hidden;
+      padding: 0.6rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 25s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0 2.5rem;
+    }
+    .ticker-item span { color: var(--green-bull); }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-visual { order: -1; }
+      .hero-bull-ring { width: 280px; height: 280px; }
+      .bull-center { font-size: 5.5rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    /* =============================================
+       MARQUEE / MEME GALLERY
+    ============================================= */
+    #gallery {
+      padding: 4rem 0;
+      overflow: hidden;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 1.5rem;
+      animation: slideLeft 30s linear infinite;
+    }
+    .gallery-row.reverse {
+      animation: slideRight 30s linear infinite;
+      margin-top: 1.5rem;
+    }
+    @keyframes slideLeft {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes slideRight {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
+    }
+
+    .meme-card {
+      flex-shrink: 0;
+      width: 200px; height: 200px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .meme-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,164,34,0.08) 0%, transparent 50%);
+    }
+    .meme-card:hover {
+      transform: scale(1.06) rotate(-2deg);
+      border-color: rgba(232,164,34,0.5);
+      box-shadow: var(--glow-gold);
+    }
+    .meme-card .label {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* =============================================
+       ABOUT
+    ============================================= */
+    #about {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .about-card-stack {
+      position: relative;
+      width: 340px;
+    }
+    .stack-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .stack-card::before, .stack-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(232,164,34,0.1);
+    }
+    .stack-card::before { transform: rotate(4deg); z-index: -1; background: rgba(42,22,8,0.5); }
+    .stack-card::after  { transform: rotate(-3deg); z-index: -2; background: rgba(26,13,6,0.5); }
+
+    .big-bull { font-size: 9rem; line-height: 1; display: block; margin-bottom: 1rem; }
+    .about-badge {
+      background: linear-gradient(135deg, var(--gold-dim), var(--amber));
+      color: var(--brown-900);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      display: inline-block;
+    }
+
+    .about-text {}
+    .about-h2 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+      line-height: 0.95;
+    }
+    .about-p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--cream-dim);
+      margin-bottom: 1.25rem;
+    }
+    .about-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .about-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--cream-dim);
+    }
+    .about-bullets li::before {
+      content: '⚡';
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-card-stack { width: 280px; margin: 0 auto; }
+    }
+
+    /* =============================================
+       TOKENOMICS
+    ============================================= */
+    #tokenomics {
+      background: linear-gradient(180deg, var(--brown-900) 0%, rgba(42,22,8,0.4) 50%, var(--brown-900) 100%);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-h2 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--cream);
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .donut-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .donut-svg {
+      width: 260px; height: 260px;
+      transform: rotate(-90deg);
+    }
+    .donut-center {
+      position: absolute;
+      text-align: center;
+    }
+    .donut-center .d-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .donut-center .d-lab {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .token-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .token-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .token-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      transition: var(--transition);
+    }
+    .token-card:hover {
+      border-color: rgba(232,164,34,0.4);
+      transform: translateY(-3px);
+    }
+    .tc-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .tc-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .tc-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .allocation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .alloc-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+    .alloc-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--cream-dim);
+    }
+    .alloc-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .alloc-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1.5s cubic-bezier(0.4,0,0.2,1) 0.3s;
+      width: 0;
+    }
+    .alloc-item.visible .alloc-fill { width: var(--w); }
+    .alloc-pct {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .tokenomics-grid { grid-template-columns: 1fr; }
+      .token-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .token-row { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       ROADMAP
+    ============================================= */
+    #roadmap {}
+    .roadmap-track {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .roadmap-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 14px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), rgba(232,164,34,0.1));
+    }
+    .road-phase {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .road-phase::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 1.5rem;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--brown-900);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 12px rgba(232,164,34,0.5);
+      z-index: 1;
+    }
+    .road-phase.done::before {
+      background: var(--gold);
+    }
+    .road-phase.active::before {
+      background: var(--amber);
+      animation: phasePulse 2s ease-in-out infinite;
+    }
+    @keyframes phasePulse {
+      0%,100% { box-shadow: 0 0 12px rgba(232,164,34,0.5); }
+      50% { box-shadow: 0 0 24px rgba(232,164,34,0.9); }
+    }
+
+    .phase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+    .road-phase.done .phase-card { border-color: rgba(232,164,34,0.3); }
+    .road-phase.active .phase-card { border-color: rgba(212,112,10,0.5); box-shadow: 0 0 20px rgba(212,112,10,0.15); }
+    .phase-card:hover { transform: translateX(6px); }
+
+    .phase-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+    }
+    .phase-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+    }
+    .phase-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+    .badge-done { background: rgba(39,174,96,0.15); color: var(--green-bull); border: 1px solid rgba(39,174,96,0.3); }
+    .badge-live { background: rgba(212,112,10,0.15); color: var(--amber); border: 1px solid rgba(212,112,10,0.3); }
+    .badge-soon { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1); }
+
+    .phase-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .phase-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--cream-dim);
+    }
+    .phase-items li .check { color: var(--green-bull); flex-shrink: 0; }
+    .phase-items li .dot { color: var(--text-muted); flex-shrink: 0; }
+
+    /* =============================================
+       HOW TO BUY
+    ============================================= */
+    #how-to-buy {
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(92,46,13,0.25) 0%, transparent 70%);
+    }
+    .htb-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .htb-steps::before {
+      content: '';
+      position: absolute;
+      top: 3.5rem;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      pointer-events: none;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: var(--transition);
+    }
+    .step-card:hover {
+      border-color: rgba(232,164,34,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--brown-900);
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 4px 16px rgba(232,164,34,0.3);
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .htb-steps { grid-template-columns: 1fr 1fr; }
+      .htb-steps::before { display: none; }
+    }
+    @media (max-width: 500px) {
+      .htb-steps { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       COMMUNITY
+    ============================================= */
+    #community {
+      text-align: center;
+    }
+    .community-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 640px;
+      margin: 2.5rem auto 0;
+    }
+    .social-card {
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid transparent;
+    }
+    .social-card.tg {
+      background: rgba(0,136,204,0.1);
+      border-color: rgba(0,136,204,0.2);
+    }
+    .social-card.tg:hover {
+      background: rgba(0,136,204,0.18);
+      border-color: rgba(0,136,204,0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,136,204,0.15);
+    }
+    .social-card.x {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .social-card.x:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-5px);
+    }
+    .social-icon { font-size: 2.5rem; }
+    .social-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .social-count {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+    .social-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 500px) {
+      .community-cards { grid-template-columns: 1fr; max-width: 320px; }
+    }
+
+    /* =============================================
+       FAQ
+    ============================================= */
+    #faq {
+      background: linear-gradient(180deg, transparent, rgba(42,22,8,0.3), transparent);
+    }
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item.open { border-color: rgba(232,164,34,0.35); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--gold-light); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(232,164,34,0.1);
+      border: 1px solid rgba(232,164,34,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--gold);
+      transition: transform 0.35s ease, background 0.3s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(232,164,34,0.2);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+      padding: 0 1.5rem;
+    }
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 1.5rem 1.25rem;
+    }
+    .faq-a p {
+      font-size: 0.95rem;
+      color: var(--cream-dim);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       FINAL CTA
+    ============================================= */
+    #cta {
+      text-align: center;
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(92,46,13,0.55) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-emoji {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1rem;
+      animation: ctaBounce 2s ease-in-out infinite;
+    }
+    @keyframes ctaBounce {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.05); }
+    }
+    .cta-h2 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .cta-sub {
+      font-size: 1.1rem;
+      color: var(--cream-dim);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .contract-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+    }
+    .contract-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .contract-addr {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      color: var(--cream-dim);
+      letter-spacing: 0.04em;
+    }
+    .copy-btn {
+      background: rgba(232,164,34,0.12);
+      border: 1px solid rgba(232,164,34,0.2);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 0.35rem 0.9rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .copy-btn:hover { background: rgba(232,164,34,0.2); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--brown-900);
+      border-top: 1px solid rgba(232,164,34,0.08);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--gold-dim);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .disclaimer {
+      text-align: center;
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      font-size: 0.72rem;
+      color: rgba(154,120,80,0.6);
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       MISC / DIVIDER
+    ============================================= */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,164,34,0.15), transparent);
+      margin: 0 auto;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <span class="bull-emoji">🐂</span>
+          BULL THE LEADER
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#tokenomics">Tokenomics</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#how-to-buy">How to Buy</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#how-to-buy" class="btn btn-primary nav-cta">Buy $BULL</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about"      onclick="closeMobile()">About</a>
+    <a href="#tokenomics" onclick="closeMobile()">Tokenomics</a>
+    <a href="#roadmap"    onclick="closeMobile()">Roadmap</a>
+    <a href="#how-to-buy" onclick="closeMobile()">How to Buy</a>
+    <a href="#community"  onclick="closeMobile()">Community</a>
+    <a href="#faq"        onclick="closeMobile()">FAQ</a>
+    <a href="#how-to-buy" class="btn btn-primary btn-lg" onclick="closeMobile()" style="margin-top:1rem;">🐂 Buy $BULL</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <span class="live-dot"></span>
+            Now Live on Solana
+          </div>
+          <h1 class="hero-h1">
+            THE<br>
+            <span class="accent">BULL</span><br>
+            <span class="outline">LEADS</span>
+          </h1>
+          <p class="hero-sub">
+            Not just another memecoin. BULL THE LEADER is the alpha of the herd — built for those who charge when others run. Join the stampede before it's too late. 🐂
+          </p>
+          <div class="hero-btns">
+            <a href="#how-to-buy" class="btn btn-primary btn-lg">🚀 Buy $BULL Now</a>
+            <a href="#community"  class="btn btn-outline btn-lg">💬 Join Telegram</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-val">1B</div>
+              <div class="stat-lab">Total Supply</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val">0%</div>
+              <div class="stat-lab">Buy/Sell Tax</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val">🔥</div>
+              <div class="stat-lab">LP Burned</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val">✅</div>
+              <div class="stat-lab">Renounced</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-bull-ring">
+            <div class="ring-outer"></div>
+            <div class="ring-mid"></div>
+            <div class="bull-center">🐂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery">
+    <div class="gallery-row" id="galleryRow1"></div>
+    <div class="gallery-row reverse" id="galleryRow2"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-card-stack">
+            <div class="stack-card">
+              <span class="big-bull">🐂</span>
+              <div class="about-badge">THE LEADER OF THE HERD</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">Our Story</p>
+          <h2 class="about-h2">WHY THE BULL LEADS</h2>
+          <p class="about-p">
+            In a jungle of rugs and rug-pullers, BULL THE LEADER was born with one mission: to charge forward, never look back, and lead the community to glory. No VC bags. No team tokens. Pure meme energy with real community power.
+          </p>
+          <p class="about-p">
+            The bull doesn't ask for permission. The bull doesn't follow trends. The bull IS the trend.
+          </p>
+          <ul class="about-bullets">
+            <li>Community-owned from day one — no insider allocations</li>
+            <li>Liquidity fully burned — nobody's pulling the floor</li>
+            <li>Contract renounced — even we can't change a thing</li>
+            <li>Backed by a herd of diamond-hooved holders</li>
+          </ul>
+          <a href="#how-to-buy" class="btn btn-primary">Get In The Herd 🐂</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== TOKENOMICS ===================== -->
+  <section id="tokenomics">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">By The Numbers</p>
+        <h2 class="section-h2">TOKENOMICS</h2>
+        <p class="section-sub">Simple. Clean. Bullish. The way it should be.</p>
+      </div>
+
+      <div class="tokenomics-grid">
+        <div class="reveal">
+          <div class="donut-wrap" style="margin-bottom:2rem;">
+            <svg class="donut-svg" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="14"/>
+              <!-- Presale 40% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#e8a422" stroke-width="14"
+                stroke-dasharray="125.66 188.49" stroke-linecap="round" class="donut-seg"/>
+              <!-- Liquidity 30% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#d4700a" stroke-width="14"
+                stroke-dasharray="94.24 219.91" stroke-dashoffset="-125.66" stroke-linecap="round"/>
+              <!-- Marketing 20% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#7a3d12" stroke-width="14"
+                stroke-dasharray="62.83 251.33" stroke-dashoffset="-219.91" stroke-linecap="round"/>
+              <!-- Team 10% -->
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#5c2e0d" stroke-width="14"
+                stroke-dasharray="31.41 282.74" stroke-dashoffset="-282.74" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">
+              <div class="d-num">1B</div>
+              <div class="d-lab">Total Supply</div>
+            </div>
+          </div>
+
+          <div class="allocation-list" id="allocList">
+            <div class="alloc-item reveal" style="--w:40%">
+              <span class="alloc-name">🟡 Presale</span>
+              <div class="alloc-bar"><div class="alloc-fill" style="background:var(--gold)"></div></div>
+              <span class="alloc-pct">40%</span>
+            </div>
+            <div class="alloc-item reveal" style="--w:30%">
+              <span class="alloc-name">🟠 Liquidity</span>
+              <div class="alloc-bar"><div class="alloc-fill" style="background:var(--amber)"></div></div>
+              <span class="alloc-pct">30%</span>
+            </div>
+            <div class="alloc-item reveal" style="--w:20%">
+              <span class="alloc-name">🟤 Marketing</span>
+              <div class="alloc-bar"><div class="alloc-fill" style="background:var(--brown-500)"></div></div>
+              <span class="alloc-pct">20%</span>
+            </div>
+            <div class="alloc-item reveal" style="--w:10%">
+              <span class="alloc-name">⚫ Team</span>
+              <div class="alloc-bar"><div class="alloc-fill" style="background:var(--brown-600)"></div></div>
+              <span class="alloc-pct">10%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="token-cards reveal">
+          <div class="token-row">
+            <div class="token-card">
+              <div class="tc-label">Network</div>
+              <div class="tc-val">Solana</div>
+              <div class="tc-sub">Ultra-fast, low fees</div>
+            </div>
+            <div class="token-card">
+              <div class="tc-label">Ticker</div>
+              <div class="tc-val">$BULL</div>
+              <div class="tc-sub">Symbol of strength</div>
+            </div>
+          </div>
+          <div class="token-row">
+            <div class="token-card">
+              <div class="tc-label">Buy Tax</div>
+              <div class="tc-val" style="color:var(--green-bull)">0%</div>
+              <div class="tc-sub">Zero friction entry</div>
+            </div>
+            <div class="token-card">
+              <div class="tc-label">Sell Tax</div>
+              <div class="tc-val" style="color:var(--green-bull)">0%</div>
+              <div class="tc-sub">Exit anytime, freely</div>
+            </div>
+          </div>
+          <div class="token-card" style="text-align:center;">
+            <div class="tc-label">LP Status</div>
+            <div class="tc-val" style="font-size:2.2rem;">🔥 BURNED</div>
+            <div class="tc-sub" style="margin-top:0.3rem;">The floor belongs to the herd — forever</div>
+          </div>
+          <div class="token-card" style="text-align:center;">
+            <div class="tc-label">Contract</div>
+            <div class="tc-val" style="font-size:2.2rem;">✅ RENOUNCED</div>
+            <div class="tc-sub" style="margin-top:0.3rem;">No admin. No backdoors. Pure decentralization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== ROADMAP ===================== -->
+  <section id="roadmap">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">The Path Forward</p>
+        <h2 class="section-h2">ROADMAP</h2>
+        <p class="section-sub">The bull charges forward — one phase at a time.</p>
+      </div>
+
+      <div style="max-width:720px; margin:0 auto;">
+        <div class="roadmap-track">
+          <div class="roadmap-line"></div>
+
+          <div class="road-phase done reveal">
+            <div class="phase-card">
+              <div class="phase-top">
+                <span class="phase-name">PHASE 1 — THE BIRTH</span>
+                <span class="phase-badge badge-done">✓ Complete</span>
+              </div>
+              <ul class="phase-items">
+                <li><span class="check">✓</span> Concept &amp; branding finalized</li>
+                <li><span class="check">✓</span> Smart contract deployed &amp; renounced</li>
+                <li><span class="check">✓</span> Website launch</li>
+                <li><span class="check">✓</span> Community Telegram &amp; X created</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="road-phase done reveal">
+            <div class="phase-card">
+              <div class="phase-top">
+                <span class="phase-name">PHASE 2 — THE CHARGE</span>
+                <span class="phase-badge badge-done">✓ Complete</span>
+              </div>
+              <ul class="phase-items">
+                <li><span class="check">✓</span> Presale launched &amp; sold out</li>
+                <li><span class="check">✓</span> Raydium liquidity pool created</li>
+                <li><span class="check">✓</span> LP burned forever 🔥</li>
+                <li><span class="check">✓</span> CoinGecko &amp; CMC listing submitted</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="road-phase active reveal">
+            <div class="phase-card">
+              <div class="phase-top">
+                <span class="phase-name">PHASE 3 — THE STAMPEDE</span>
+                <span class="phase-badge badge-live">🔴 Live Now</span>
+              </div>
+              <ul class="phase-items">
+                <li><span class="check">✓</span> 1,000 holders milestone hit</li>
+                <li><span class="dot">◉</span> CEX listing negotiations</li>
+                <li><span class="dot">◉</span> Influencer campaign — 50 KOLs</li>
+                <li><span class="dot">◉</span> Meme contest with prize pool</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="road-phase reveal">
+            <div class="phase-card">
+              <div class="phase-top">
+                <span class="phase-name">PHASE 4 — THE GLORY</span>
+                <span class="phase-badge badge-soon">Coming Soon</span>
+              </div>
+              <ul class="phase-items">
+                <li><span class="dot">◉</span> Tier-1 CEX listing</li>
+                <li><span class="dot">◉</span> $BULL merch store launch</li>
+                <li><span class="dot">◉</span> DAO governance proposal</li>
+                <li><span class="dot">◉</span> 10,000 holders — THE HERD IS MASSIVE</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== HOW TO BUY ===================== -->
+  <section id="how-to-buy">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Join The Herd</p>
+        <h2 class="section-h2">HOW TO BUY $BULL</h2>
+        <p class="section-sub">Four simple steps. Anyone can do it. Even your grandma.</p>
+      </div>
+
+      <div class="htb-steps">
+        <div class="step-card reveal">
+          <div class="step-num">1</div>
+          <span class="step-icon">👛</span>
+          <div class="step-title">Get a Wallet</div>
+          <p class="step-desc">Download Phantom or Solflare wallet from the official website or your app store.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">2</div>
+          <span class="step-icon">💰</span>
+          <div class="step-title">Buy SOL</div>
+          <p class="step-desc">Purchase Solana (SOL) on Coinbase, Binance, or any major exchange, then send it to your wallet.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">3</div>
+          <span class="step-icon">🔄</span>
+          <div class="step-title">Swap on Raydium</div>
+          <p class="step-desc">Go to Raydium.io, connect your wallet, paste the $BULL contract address and swap your SOL.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">4</div>
+          <span class="step-icon">🐂</span>
+          <div class="step-title">HODL &amp; Win</div>
+          <p class="step-desc">You're in the herd now. Diamond hooves only. The bull charges forward — HODL tight!</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:3rem;" class="reveal">
+        <a href="#" class="btn btn-primary btn-lg">Buy $BULL on Raydium 🚀</a>
+        <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">Set slippage to 1–3% for best results</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== COMMUNITY ===================== -->
+  <section id="community">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">The Herd</p>
+        <h2 class="section-h2">JOIN THE COMMUNITY</h2>
+        <p class="section-sub">The bull never runs alone. Strength in numbers — join thousands of holders.</p>
+      </div>
+
+      <div class="community-cards reveal">
+        <a href="#" class="social-card tg">
+          <span class="social-icon">✈️</span>
+          <span class="social-name">Telegram</span>
+          <span class="social-count">5,200+</span>
+          <span class="social-desc">Members in the herd</span>
+        </a>
+        <a href="#" class="social-card x">
+          <span class="social-icon">𝕏</span>
+          <span class="social-name">X / Twitter</span>
+          <span class="social-count">3,800+</span>
+          <span class="social-desc">Followers &amp; growing</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Got Questions?</p>
+        <h2 class="section-h2">FAQ</h2>
+        <p class="section-sub">The bull answers every question — no BS.</p>
+      </div>
+
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">
+            What is BULL THE LEADER?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>BULL THE LEADER ($BULL) is a community-driven memecoin on the Solana blockchain. Born from meme culture and powered by its passionate community, BULL aims to lead the meme token space with transparency, no taxes, and a fully burned liquidity pool.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Is $BULL safe? Is the contract renounced?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. The smart contract has been fully renounced — not even the team can alter it. Liquidity is burned permanently, meaning no one can pull the rug. What you see is what you get: a community token with no hidden tricks.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Where can I buy $BULL?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>$BULL is currently available on Raydium (Solana DEX). Simply connect your Phantom or Solflare wallet, paste the $BULL contract address, and swap your SOL. Check the "How to Buy" section above for a step-by-step guide.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            What are the taxes on $BULL?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Zero. Absolutely zero. 0% buy tax and 0% sell tax. The bull charges freely — and so do you. We believe in frictionless trading and putting the money back in the community's hands.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Will $BULL be listed on major exchanges?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>That's Phase 4 on our roadmap! We're actively pursuing Tier-1 CEX listings. The bigger the community grows, the more leverage we have. Help us reach 10,000 holders and the exchanges will come knocking.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Is this a rug pull?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Lol, no. LP burned. Contract renounced. No team tokens. If you don't believe us, check the contract on Solscan. The bull runs forward — rugs run backward. We're the bull.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section id="cta">
+    <div class="container">
+      <span class="cta-emoji">🐂</span>
+      <h2 class="cta-h2">THE BULL WAITS FOR NO ONE</h2>
+      <p class="cta-sub">The herd is charging. The train is moving. Are you in or are you watching from the sidelines?</p>
+      <div class="cta-btns">
+        <a href="#how-to-buy" class="btn btn-primary btn-lg">🚀 Buy $BULL Now</a>
+        <a href="#community"  class="btn btn-outline btn-lg">💬 Join The Herd</a>
+      </div>
+      <div class="contract-wrap reveal">
+        <span class="contract-label">CA:</span>
+        <span class="contract-addr" id="caAddr">BULL...contract...address...here</span>
+        <button class="copy-btn" onclick="copyCA()">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">🐂 BULL THE LEADER</div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#">Telegram</a>
+          <a href="#">Twitter</a>
+        </div>
+        <div class="footer-copy">© 2025 BULL THE LEADER. All rights reserved.</div>
+      </div>
+      <p class="disclaimer">
+        $BULL is a meme token created for entertainment purposes. It has no intrinsic value or financial return expectation. Cryptocurrency investments carry significant risk. Always do your own research (DYOR) before investing. Nothing on this website constitutes financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // ── Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Ticker
+    const tickerItems = [
+      '🐂 $BULL TO THE MOON', '🚀 HODL HARD', '🔥 LP BURNED FOREVER',
+      '✅ CONTRACT RENOUNCED', '💎 DIAMOND HOOVES ONLY', '📈 BULL RUN INCOMING',
+      '🤝 0% TAX', '⚡ SOLANA SPEED', '🌕 DESTINATION: MOON',
+      '🐂 $BULL TO THE MOON', '🚀 HODL HARD', '🔥 LP BURNED FOREVER',
+      '✅ CONTRACT RENOUNCED', '💎 DIAMOND HOOVES ONLY', '📈 BULL RUN INCOMING',
+      '🤝 0% TAX', '⚡ SOLANA SPEED', '🌕 DESTINATION: MOON',
+    ];
+    const tickerTrack = document.getElementById('ticker');
+    tickerItems.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'ticker-item';
+      span.innerHTML = t;
+      tickerTrack.appendChild(span);
+    });
+
+    // ── Meme gallery data
+    const memes1 = [
+      { emoji: '🐂', label: 'Bull Mode: ON' },
+      { emoji: '💎', label: 'Diamond Hooves' },
+      { emoji: '🚀', label: 'To The Moon' },
+      { emoji: '🔥', label: 'LFG' },
+      { emoji: '🤑', label: 'Wen Lambo?' },
+      { emoji: '📈', label: 'Line Goes Up' },
+      { emoji: '🐂', label: 'Bull Mode: ON' },
+      { emoji: '💎', label: 'Diamond Hooves' },
+      { emoji: '🚀', label: 'To The Moon' },
+      { emoji: '🔥', label: 'LFG' },
+    ];
+    const memes2 = [
+      { emoji: '🌕', label: 'Moon Bound' },
+      { emoji: '💪', label: 'Strong Hooves' },
+      { emoji: '⚡', label: 'Solana Fast' },
+      { emoji: '😤', label: 'Not Selling' },
+      { emoji: '🏆', label: 'The Leader' },
+      { emoji: '👑', label: 'King Bull' },
+      { emoji: '🌕', label: 'Moon Bound' },
+      { emoji: '💪', label: 'Strong Hooves' },
+      { emoji: '⚡', label: 'Solana Fast' },
+      { emoji: '😤', label: 'Not Selling' },
+    ];
+
+    function buildGallery(rowId, memes) {
+      const row = document.getElementById(rowId);
+      memes.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'meme-card';
+        card.innerHTML = `${m.emoji}<span class="label">${m.label}</span>`;
+        row.appendChild(card);
+      });
+    }
+    buildGallery('galleryRow1', memes1);
+    buildGallery('galleryRow2', memes2);
+
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          // Also trigger alloc bars
+          if (entry.target.classList.contains('alloc-item')) {
+            entry.target.classList.add('visible');
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ── FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ── Copy CA
+    function copyCA() {
+      const addr = document.getElementById('caAddr').textContent;
+      navigator.clipboard.writeText(addr).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✓ Copied!';
+        btn.style.color = 'var(--green-bull)';
+        setTimeout(() => { btn.textContent = 'Copy'; btn.style.color = ''; }, 2000);
+      });
+    }
+
+    // ── Stagger hero stat on load
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        el.style.transition = 'all 0.5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 800 + i * 120);
+    });
+  </script>
+</body>
+</html>
